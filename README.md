@@ -1,4 +1,39 @@
 #### obnginx
+#####1 Getting Started
+######Install from source
+```
+tar -zxvf nginx-1.9.2.tar.gz
+./configure
+make
+make install
+```
+On ubuntu machine, must install
+```
+apt-get install libpcre3-dev zlib1g-dev libssl-dev
+```
+By default the path should be
+```
+/usr/local/nginx/sbin/nginx -V
+```
+change path:
+```
+./configure --prefix=/usr --conf-path=/etc/nginx
+```
+configure with other modules
+```
+./configure --with-http_ssl_module --with-http_spdy_module...
+```
+#####2 Basic Configuration
+If nginx was installed from source, the path to conf file should be
+```
+/usr/local/nginx/conf
+```
+If from package,then the location might be
+```
+/etc/nginx
+/usr/local/etc/nginx
+```
+/etc/n
 #####4 Reverse proxy
 ######Config a basic
 set long lived HTTP cache headers
