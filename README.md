@@ -1,6 +1,6 @@
-#### obnginx
-#####1 Getting Started
-######Install from source
+# obnginx
+## 1. Getting Started
+### Install from source
 ```
 tar -zxvf nginx-1.9.2.tar.gz
 ./configure
@@ -23,7 +23,7 @@ configure with other modules
 ```
 ./configure --with-http_ssl_module --with-http_spdy_module...
 ```
-#####2 Basic Configuration
+## 2. Basic Configuration
 If nginx was installed from source, the path to conf file should be
 ```
 /usr/local/nginx/conf
@@ -34,8 +34,8 @@ If from package,then the location might be
 /usr/local/etc/nginx
 ```
 /etc/n
-#####4 Reverse proxy
-######Config a basic
+## 4. Reverse proxy
+### Config a basic
 set long lived HTTP cache headers
 ```
 location /assets{
@@ -48,7 +48,7 @@ test
 curl -I 127.0.0.1/assets/a.jpg
 ```
 
-######more rebust
+### more rebust
 ```
 http{
   upstream rails{
@@ -68,7 +68,7 @@ http{
   }
 }
 ```
-######custom error page
+### custom error page
 hide nginx version
 ```
 server_tokens off;
@@ -121,10 +121,10 @@ http{
   }
 }
 ```
-######Websockets
-######Future
+### Websockets
+### Future
 
-#####5 Load Balancing
+## 5. Load Balancing
 weighted servers
 ```
 upstream a{
@@ -147,20 +147,20 @@ location /{
 }
 ```
 
-######mark as down(temp)
+### mark as down(temp)
 ```
 upstream x{
   server  a.com down;
 }
 ```
-######mark as backup
+### mark as backup
 ```
 upstream x{
   server  a.com backup;
 }
 ```
-######slow start
-######Load Balancing Methods
+### slow start
+### Load Balancing Methods
 ```
 upstream a {
   least_conn; // OR ip_hash;
@@ -172,4 +172,4 @@ upstream a {
   hash $remote_addr/$uri consistent;
 }
 ```
-######C10K with nginx (serving 10000 concurrrent connections)
+### C10K with nginx (serving 10000 concurrrent connections)
